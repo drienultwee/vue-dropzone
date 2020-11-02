@@ -265,6 +265,14 @@ export default {
       vm.$emit("vdropzone-drag-leave", event);
     });
 
+    this.dropzone.on("init", function() {
+      vm.$emit("vdropzone-init");
+    });
+
+    this.dropzone.on("chunksUploaded", function(file, done) {
+      vm.$emit("vdropzone-chunks-uploaded", file, done);
+    });
+
     vm.$emit("vdropzone-mounted");
   },
   beforeDestroy() {
